@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Main</title>
+	<link href="../static/css/style.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+	
+
+	<main scrolling= "yes">
+		<div class="form_container">
+			<form action="/add_message" method="POST" name="form" role="form">
+				<input type="text" name="input_command" placeholder="Введите команду" id="input">
+				<input type="button" value="AJAX" onclick="add_message();" id="but">
+			</form>
+		</div>
+
+		<form action="/interrupt" method="POST">
+			<button type="submit"><i>Прервать</i></button>
+		</form>
+		<div role="result">
+		{% for message in messages %}
+		<div class="message" id="message">
+			<h2><pre>{{ message.input_command }}</pre></h2>
+		</div>
+		{% endfor %}
+		</div>
+		<!--<div class="message" id="message">
+			<h2><pre id="divcommand"></pre></h2>
+		</div>
+		<div class="message" id="message">
+			<h2><pre id="divmessage"></pre></h2>
+		</div>-->
+		
+
+	</main>
+
+
+</body>
+</html>
